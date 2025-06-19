@@ -57,7 +57,8 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
-gem 'devise'           # Autenticação
+
+gem "devise", "~> 4.9.4" # Autenticação
 
 gem 'simple_form'      # Formulários simples
 gem 'ransack'          # Busca avançada

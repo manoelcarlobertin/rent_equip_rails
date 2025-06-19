@@ -414,7 +414,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
-  devise
+  devise (~> 4.9.4)
   factory_bot_rails
   faker
   image_processing
