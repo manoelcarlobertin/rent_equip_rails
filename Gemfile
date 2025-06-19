@@ -44,7 +44,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem 'rspec-rails'      # Testes
   gem 'shoulda-matchers' # Matchers para testes
-  gem 'factory_bot_rails' # Fábricas para testes
+  gem 'factory_bot_rails'# Fábricas para testes
   gem 'faker'            # Dados falsos para testes
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false

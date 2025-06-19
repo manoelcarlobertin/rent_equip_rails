@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
-    <title><%= content_for(:title) || "Gerenciador Equipamentos" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gerenciador Equipamentos</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -24,6 +26,18 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
+      <% if notice.present? %>
+        <p class="notice alert alert-success">
+          <%= notice %>
+        </p>
+      <% end %>
+
+      <% if alert.present? %>
+        <p class="alert alert-danger">
+          <%= alert %>
+        </p>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>

@@ -1,10 +1,16 @@
-<div id="<%= dom_id equipment %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= equipment.name %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Serial number:</strong>
-    <%= equipment.serial_number %>
-  </div>
-</div>
+<table class="min-w-full divide-y divide-gray-200 my-5">
+  <tbody class="bg-white divide-y divide-gray-200">
+    <tr id="<%= dom_id equipment %>" class="hover:bg-gray-50">
+      <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Name:</td>
+      <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+        <%= equipment.name %>
+      </td>
+    </tr>
+    <tr>
+      <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Serial number:</td>
+      <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+        <%= equipment.serial_number %>
+      </td>
+    </tr>
+  </tbody>
+</table>
