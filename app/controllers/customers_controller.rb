@@ -29,6 +29,7 @@ class CustomersController < ApplicationController
     if @customer.save
       redirect_to customers_path, notice: "Cliente cadastrado com sucesso."
     else
+      flash.now[:alert] = "Erro ao criar cliente."
       render :new, status: :unprocessable_entity
     end
   end
