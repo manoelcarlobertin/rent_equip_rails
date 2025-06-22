@@ -1,10 +1,7 @@
 <div id="kt_content_container" class="container-xxl max-w-3xl mx-auto">
   <div class="card">
     <%= simple_form_for @customer do |form| %>
-      <div class="card-footer d-flex justify-content-between">
-        <%= form.button :button,
-          class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
-      </div>
+
       <div class="card-body">
         <div class="flex flex-col md:flex-row md:space-x-4">
           <div class="flex-1">
@@ -22,11 +19,14 @@
             <%= form.input :email %>
           </div>
         </div>
+        <div class="card-footer d-flex justify-content-between">
+          <%= form.button :button, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+        </div>
       </div>
       <div class="card-footer d-flex justify-content-between">
         <%= link_to "Voltar", customers_path,
           class: "rounded-md px-2.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium" %>
       </div>
-     <% end %>
+    <% end %>
   </div>
 </div>
