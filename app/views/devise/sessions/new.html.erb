@@ -1,23 +1,39 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
-    <h2 class="text-2xl font-bold mb-6 text-gray-800">Login</h2>
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" } %>
-        <%= f.input :password,
-                    required: false,
-                    input_html: { autocomplete: "current-password" } %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-      </div>
+<section class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+  <div class="w-full max-w-md px-4">
+    <%= render 'components/card', title: 'Login' do %>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
+        <!-- Email -->
+        <div>
+          <%= f.label :email, t('devise.sessions.email'),
+            class: "block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300" %>
+            <%= f.input_field :email, autofocus: true, autocomplete: "email", required: false,
+              class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" %>
+        </div>
+        <!-- Password -->
+        <div>
+          <%= f.label :password, t('devise.sessions.password'),
+            class: "block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300" %>
+            <%= f.input_field :password, autocomplete: "current-password" , required: false,
+              class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" %>
+        </div>
+        <!-- Remember me -->
+        <% if devise_mapping.rememberable? %>
+          <div class="flex items-center">
+            <%= f.check_box :remember_me, class: "h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" %>
+              <%= f.label :remember_me, t('devise.sessions.remember_me'),
+                class: "ml-2 block text-sm text-gray-900 dark:text-gray-300" %>
+          </div>
+        <% end %>
+          <!-- Submit -->
+          <div>
+            <%= f.button :submit, t('devise.sessions.sign_in'),
+              class: "w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800" %>
+          </div>
+      <% end %>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Log in" %>
-      </div>
+        <div class="mt-4 text-center text-sm">
+          <%= render "devise/shared/links", class: "text-blue-600 hover:underline" %>
+        </div>
     <% end %>
-
-    <%= render "devise/shared/links" %>
   </div>
-</div>
+</section>
