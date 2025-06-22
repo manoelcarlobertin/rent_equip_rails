@@ -1,0 +1,24 @@
+<!-- Toolbar Component -->
+<div id="kt_toolbar" class="py-5 pb-lg-15 bg-gray-800">
+  <div id="kt_toolbar_container" class="container-xxl flex flex-wrap justify-between items-center">
+
+    <!-- Page Title -->
+    <header class="flex flex-col mr-3">
+      <h1 class="text-white font-bold my-1 text-3xl">Lista de Clientes</h1>
+    </header>
+
+    <!-- Action Button -->
+    <div class="flex items-center py-3 md:py-1">
+      <%# if policy(Customer).create? %>
+        <%= link_to "Novo", new_customer_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+      <%# end %>
+    </div>
+  </div>
+</div>
+
+<!-- Content Container -->
+<main id="kt_content_container" class="container-xxl">
+  <section class="flex flex-col gap-4">
+    <%= render @customers %>
+  </section>
+</main>
