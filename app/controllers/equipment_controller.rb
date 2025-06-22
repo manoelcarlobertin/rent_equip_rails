@@ -2,12 +2,13 @@ class EquipmentController < ApplicationController
   before_action :set_equipment, only: %i[ show edit update destroy ]
 
   def index
+    @equipments = Equipment.all
+
     # Cria um objeto de busca com os parâmetros enviados pelo usuário
-    @q = Equipment.ransack(params[:q])
+    # @q = Equipment.ransack(params[:q])
 
     # Executa a busca e retorna os resultados
-    @equipments = @q.result(distinct: true)
-    @equipment = Equipment.all
+    # @equipments = @q.result(distinct: true)
   end
 
   # GET /equipment/1 or /equipment/1.json

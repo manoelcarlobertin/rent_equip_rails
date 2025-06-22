@@ -1,33 +1,32 @@
-require 'spec_helper'
-require 'rspec/rails'
-
+# spec/rails_helper.rb
 ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
+require File.expand_path('../config/environment', __dir__)
+
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
-begin
-  ActiveRecord::Migration.maintain_test_schema!
-rescue ActiveRecord::PendingMigrationError => e
-  abort e.to_s.strip
+require 'rspec/rails'
+# Patch para corrigir erro de ENCODING_FLAG no Rails 8 com RSpec
+# module ActionView
+#   module Template::Handlers::ERB
+#     ENCODING_FLAG = 0 unless const_defined?(:ENCODING_FLAG)
+#   end
+# end
+# Carrega arquivos de suporte
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+# Adicione outras requires aqui, se precisar
+require 'support/factory_bot'
+require 'support/shoulda_matchers'
+# Configurações do RSpec
+RSpec.configure do |config|
+config.fixture_path = ["#{::Rails.root}/spec/fixtures"]
+  config.use_transactional_fixtures = true # Limpa o banco entre os testes
+  config.filter_rails_from_backtrace!
+  config.include FactoryBot::Syntax::Methods
 end
-
-# Configuração do Shoulda Matchers para facilitar testes de validações e associações
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
+# Configura Shoulda Matchers (se estiver usando)
+Shoulda::Matchers.configure do |shoulda_config|
+  shoulda_config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
   end
-end
-
-RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_paths = [
-    Rails.root.join('spec/fixtures')
-  ]
-
-  config.include FactoryBot::Syntax::Methods
-  config.use_transactional_fixtures = true
-
-  config.filter_rails_from_backtrace!
-
 end
