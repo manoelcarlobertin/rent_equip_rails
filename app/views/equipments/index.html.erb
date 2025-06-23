@@ -1,0 +1,58 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-semibold mb-6 text-gray-800">Lista de Equipamentos</h1>
+
+  <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md">
+    <table class="w-full text-left text-sm text-gray-500">
+      <thead class="bg-gray-50 text-xs uppercase text-gray-700">
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Nome</th>
+          <th scope="col" class="px-6 py-3">Categoria</th>
+          <th scope="col" class="px-6 py-3">Status</th>
+          <th scope="col" class="px-6 py-3">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @equipments.each do |equipment| %>
+          <tr class="border-b bg-white hover:bg-gray-50">
+            <td class="px-6 py-4 font-medium text-gray-900">
+              <%= equipment.id %>
+            </td>
+            <td class="px-6 py-4">
+              <%= equipment.name %>
+            </td>
+            <td class="px-6 py-4">
+              <%= equipment.category %>
+            </td>
+            <td class="px-6 py-4">
+              <%# Exemplo de badge com Flowbite %>
+                <% status_class=case equipment.status when 'available' then 'bg-green-100 text-green-800' when 'in_use'
+                  then 'bg-yellow-100 text-yellow-800' when 'maintenance' then 'bg-red-100 text-red-800'
+                  else 'bg-gray-100 text-gray-800' end %>
+                  <span
+                    class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium <%= status_class %>">
+                    <%= equipment.status.humanize %>
+                  </span>
+            </td>
+            <td class="px-6 py-4">
+              <div class="flex space-x-2">
+                <%= link_to 'Ver', equipment_path(equipment), class: "text-blue-600 hover:text-blue-900 font-semibold"
+                  %>
+                  <%= link_to 'Editar', edit_equipment_path(equipment),
+                    class: "text-yellow-600 hover:text-yellow-900 font-semibold" %>
+                    <%= button_to 'Excluir', equipment_path(equipment), method: :delete, data: { confirm: 'Tem certeza?'},
+                    class: "text-red-600 hover:text-red-900 font-semibold" %>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%# Botão para adicionar novo equipamento %>
+    <div class="mt-6">
+      <%= link_to 'Novo Equipamento', new_equipment_path,
+        class: "inline-flex items-center rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+</div>

@@ -1,4 +1,6 @@
-<%= form_with(model: equipment, class: "contents") do |form| %>
+<%= form_with(model: equipment, url: equipment.persisted? ? equipment_path(equipment) : equipments_path,
+  class: "contents" ) do |form| %>
+<%#= form_with(model: equipment, class: "contents") do |form| %>
   <% if equipment.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
       <h2><%= pluralize(equipment.errors.count, "error") %> prohibited this equipment from being saved:</h2>
