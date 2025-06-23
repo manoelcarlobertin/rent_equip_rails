@@ -42,7 +42,7 @@ gem "thruster", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-  gem 'rspec-rails', '~> 6.0' # versão compatível com Rails 8
+  gem 'rspec-rails', '~> 8.0' # versão compatível com Rails 8
 
   gem 'shoulda-matchers' # Matchers para testes
   gem 'factory_bot_rails'# Fábricas para testes
