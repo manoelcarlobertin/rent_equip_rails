@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
 
   def index
     @customers = Customer.order(:name)
-    # authorize @customers
+    authorize @customers
   end
 
   def search
@@ -13,12 +13,12 @@ class CustomersController < ApplicationController
   end
 
   def show
-    # authorize @customer
+    authorize @customer
   end
 
   def new
     @customer = Customer.new
-    # authorize @customer
+    authorize @customer
   end
 
   def create
@@ -34,11 +34,11 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    # authorize @customer
+    authorize @customer
   end
 
   def update
-    # authorize @customer
+    authorize @customer
 
     if @customer.update(customer_params)
       redirect_to @customer, notice: t('customers.update.success')
@@ -49,7 +49,7 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    # authorize @customer
+    authorize @customer
 
     if @customer.destroy
       redirect_to customers_path, notice: t('customers.destroy.success')
