@@ -7,11 +7,10 @@ class CustomersController < ApplicationController
     # authorize @customers
   end
 
-  # def search
-  #   @customers = Customer.where("lower(name) ILIKE ?", "%#{params[:q]}%".downcase)
-
-  #   render layout: false
-  # end
+  def search
+    @customers = Customer.search_by_name(params[:q])
+    render layout: false
+  end
 
   def show
     # authorize @customer
@@ -23,13 +22,13 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = Customer.new customer_params
+    @customer = Customer.new(customer_params)
     # authorize @customer
 
     if @customer.save
-      redirect_to customers_path, notice: "Cliente cadastrado com sucesso."
+      redirect_to customers_path, notice: t('customers.create.success')
     else
-      flash.now[:alert] = "Erro ao criar cliente."
+      flash.now[:alert] = t('customers.create.error')
       render :new, status: :unprocessable_entity
     end
   end
@@ -41,15 +40,22 @@ class CustomersController < ApplicationController
   def update
     # authorize @customer
 
-    if @customer.update customer_params
-      redirect_to customer_params, notice: "Cliente atualizado com sucesso."
+    if @customer.update(customer_params)
+      redirect_to @customer, notice: t('customers.update.success')
     else
+      flash.now[:alert] = t('customers.update.error')
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     # authorize @customer
+
+    if @customer.destroy
+      redirect_to customers_path, notice: t('customers.destroy.success')
+    else
+      redirect_to customers_path, alert: t('customers.destroy.error')
+    end
   end
 
   private
@@ -59,6 +65,8 @@ class CustomersController < ApplicationController
   end
 
   def load_customer
-    @customer = Customer.find params[:id]
+    @customer = Customer.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to customers_path, alert: t('customers.not_found')
   end
 end

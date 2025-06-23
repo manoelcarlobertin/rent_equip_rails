@@ -1,0 +1,22 @@
+pt-BR:
+  customers:
+    create:
+      success: "Cliente criado com sucesso."
+      error: "Ocorreu um erro ao criar o cliente."
+    update:
+      success: "Cliente atualizado com sucesso."
+      error: "Ocorreu um erro ao atualizar o cliente."
+    destroy:
+      success: "Cliente excluído com sucesso."
+      error: "Ocorreu um erro ao excluir o cliente."
+    validation:
+      name_blank: "O nome não pode ficar em branco."
+      email_invalid: "O formato do e-mail é inválido."
+  buttons:
+    submit: "Enviar"
+    cancel: "Cancelar"
+    edit: "Editar"
+    delete: "Excluir"
+  flash:
+    success: "Operação realizada com sucesso."
+    error: "Algo deu errado. Por favor, tente novamente."

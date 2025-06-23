@@ -1,7 +1,7 @@
 class Customer < ApplicationRecord
   # --- Presença ---
   validates :name, :dob, :email, :mobile_phone, presence: true
-
+  validates :name, presence: { message: I18n.t('customers.validation.name_blank') }
   # --- Nome: apenas letras e espaços ---
   # validates :name,
   #   format: { with: /\A[a-zA-Z\s\.]+\z/, message: "only allows letters, spaces and dots" }

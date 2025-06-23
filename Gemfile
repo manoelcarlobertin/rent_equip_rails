@@ -59,10 +59,10 @@ group :development do
   gem "web-console"
 end
 
-gem "devise", "~> 4.9.4" # Autenticação
+gem "devise", "~> 4.9.4" # Autenticação do usuário
 
 gem 'simple_form'      # Formulários simples
 gem 'ransack'          # Busca avançada
-gem 'pundit'           # Autorização
+gem 'pundit'           # Permissionamento
 gem 'image_processing' # Processamento de imagens
 gem 'redis'            # Cache e background jobs

@@ -47,7 +47,7 @@
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-center space-x-2">
               <%= link_to "Editar", edit_customer_path(customer), class: "text-blue-400 hover:text-blue-300" %>
-                <%= link_to "Excluir" , customer, method: :delete, data: { confirm: "Tem certeza?" },
+              <%= button_to "Excluir", customer, method: :delete, data: { confirm: "Tem certeza?" },
                   class: "text-red-500 hover:text-red-400" %>
             </td>
           </tr>
