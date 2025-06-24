@@ -8,6 +8,7 @@
           <th scope="col" class="px-6 py-3">ID</th>
           <th scope="col" class="px-6 py-3">Nome</th>
           <th scope="col" class="px-6 py-3">Número de Série</th>
+          <th scope="col" class="px-6 py-3">Descrição</th>
           <th scope="col" class="px-6 py-3">Categoria</th>
           <th scope="col" class="px-6 py-3">Status</th>
           <th scope="col" class="px-6 py-3">Ações</th>
@@ -24,6 +25,9 @@
             </td>
             <td class="px-6 py-4">
               <%= equipment.serial_number %>
+            </td>
+            <td class="px-6 py-4">
+              <%= equipment.description %>
             </td>
             <td class="px-6 py-4">
               <%#= equipment.category %>

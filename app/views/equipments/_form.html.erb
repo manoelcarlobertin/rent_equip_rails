@@ -25,6 +25,11 @@
         class: "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full" } %>
     </div>
 
+    <div class="my-5">
+      <%= f.input :description, as: :rich_text_area, label_html: { class: "font-semibold" }, input_html: { rows: 4,
+        class: "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full resize-y" } %>
+    </div>
+
     <div class="flex justify-between items-center mt-6">
       <%= link_to "Voltar" , equipments_path,
        class: "rounded-md px-3.5 py-2.5 bg-gray-600 hover:bg-gray-500 text-white font-medium cursor-pointer" %>
