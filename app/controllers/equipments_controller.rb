@@ -1,6 +1,6 @@
 class EquipmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_equipment, only: %i[show edit update destroy]
+  before_action :load_equipment, only: [:show, :edit, :update, :destroy]
 
   def index
     @equipments = Equipment.order(:name, :serial_number)
@@ -62,11 +62,11 @@ class EquipmentsController < ApplicationController
 
   private
 
-  def equipment_params
-    params.require(:equipment).permit(:name, :serial_number, :description)
+  def load_equipment
+    @equipment = Equipment.find(params[:id])
   end
 
-  def load_equipament
-    @equipment = Equipment.find params[:id]
+  def equipment_params
+    params.require(:equipment).permit(:name, :serial_number, :description)
   end
 end
