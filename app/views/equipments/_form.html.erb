@@ -1,29 +1,34 @@
-<%= form_with(model: equipment, url: equipment.persisted? ? equipment_path(equipment) : equipments_path,
-  class: "contents" ) do |form| %>
-<%#= form_with(model: equipment, class: "contents") do |form| %>
+<%= simple_form_for equipment, url: equipment.persisted? ? equipment_path(equipment) : equipments_path, html: {
+  class: "contents" } do |f| %>
   <% if equipment.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(equipment.errors.count, "error") %> prohibited this equipment from being saved:</h2>
-
+      <h2>
+        <%= pluralize(equipment.errors.count, "error" ) %> proibiu este equipamento de ser salvo:
+      </h2>
       <ul class="list-disc ml-6">
-        <% equipment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% equipment.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": equipment.errors[:name].none?, "border-red-400 focus:outline-red-600": equipment.errors[:name].any?}] %>
-  </div>
+    <div class="my-5">
+      <%= f.input :name, label_html: { class: "font-semibold" }, input_html: {
+        class: "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full" } %>
+    </div>
 
-  <div class="my-5">
-    <%= form.label :serial_number %>
-    <%= form.text_field :serial_number, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": equipment.errors[:serial_number].none?, "border-red-400 focus:outline-red-600": equipment.errors[:serial_number].any?}] %>
-  </div>
+    <div class="my-5">
+      <%= f.input :serial_number, label_html: { class: "font-semibold" }, input_html: {
+        class: "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full" } %>
+    </div>
 
-  <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+    <div class="flex justify-between items-center mt-6">
+      <%= link_to "Voltar" , equipments_path,
+       class: "rounded-md px-3.5 py-2.5 bg-gray-600 hover:bg-gray-500 text-white font-medium cursor-pointer" %>
+      <%= f.button :submit,
+        class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+    </div>
 <% end %>

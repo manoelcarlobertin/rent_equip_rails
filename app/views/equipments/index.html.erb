@@ -1,5 +1,5 @@
 <div class="container mx-auto px-4 py-8">
-  <h1 class="text-3xl font-semibold mb-6 text-gray-800">Lista de Equipamentos</h1>
+  <h1 class="text-3xl font-semibold mb-6 text-gray-800">Listagem de Equipamentos</h1>
 
   <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md">
     <table class="w-full text-left text-sm text-gray-500">
@@ -36,16 +36,15 @@
             </td>
             <td class="px-6 py-4">
               <div class="flex space-x-2">
-                <%= link_to 'Ver', equipment_path(equipment), class: "text-blue-600 hover:text-blue-900 font-semibold"
-                  %>
-                  <%= link_to 'Editar', edit_equipment_path(equipment),
-                    class: "text-yellow-600 hover:text-yellow-900 font-semibold" %>
-                    <%= button_to 'Excluir', equipment_path(equipment), method: :delete, data: { confirm: 'Tem certeza?'},
-                    class: "text-red-600 hover:text-red-900 font-semibold" %>
+                <%= link_to 'Detalhes', equipment_path(equipment), class: "text-blue-600 hover:text-blue-900 font-semibold" %>
+                <%= link_to 'Editar', edit_equipment_path(equipment),
+                  class: "text-yellow-600 hover:text-yellow-900 font-semibold" %>
+                <%= button_to 'Excluir', equipment_path(equipment), method: :delete, data: { confirm: 'Tem certeza?'},
+                  class: "text-red-600 hover:text-red-900 font-semibold" %>
               </div>
             </td>
           </tr>
-          <% end %>
+        <% end %>
       </tbody>
     </table>
   </div>
