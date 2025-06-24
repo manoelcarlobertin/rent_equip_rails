@@ -39,7 +39,15 @@
                   else 'bg-gray-100 text-gray-800' end %>
                   <span
                     class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium <%#= status_class %>">
-                    <%#= equipment.status.humanize %>
+                    <% if equipment.schedules.any? %>
+                      <% equipment.schedules.each do |schedule| %>
+                        <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 mr-1">
+                          <%= schedule.status.humanize %>
+                        </span>
+                      <% end %>
+                    <% else %>
+                      <span>Sem status</span>
+                    <% end %>
                   </span>
             </td>
             <td class="px-6 py-4">
