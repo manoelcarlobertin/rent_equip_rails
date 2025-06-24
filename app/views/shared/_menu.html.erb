@@ -15,14 +15,14 @@
       </div>
     <% end %>
 
-        <% if policy(Equipament).index? %>
-          <div class="menu-item menu-here-bg me-0 me-lg-2">
-            <%= link_to equipaments_path, class: "menu-link py-3" do %>
-              <span class="menu-title">Equipamentos</span>
-            <% end %>
-          </div>
+    <% if policy(Equipament).index? %>
+      <div class="menu-item menu-here-bg me-0 me-lg-2">
+        <%= link_to equipaments_path, class: "menu-link py-3" do %>
+          <span class="menu-title">Equipamentos</span>
         <% end %>
-            <!--end:Menu item-->
+      </div>
+    <% end %>
+        <!--end:Menu item-->
   </div>
   <!--end::Menu-->
 </div>

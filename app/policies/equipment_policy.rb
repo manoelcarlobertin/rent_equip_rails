@@ -1,9 +1,21 @@
 class EquipmentPolicy < ApplicationPolicy
+  def index?
+    user.admin?
+  end
+
+  def show?
+    user.admin?
+  end
+
   def create?
-    true
+    user.admin?
   end
 
   def update?
+    user.admin?
+  end
+
+  def destroy?
     user.admin?
   end
 
